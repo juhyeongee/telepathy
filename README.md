@@ -11,13 +11,13 @@
 ### _Cowork tools_
 ![N|Javascript](https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white)  ![N|Javascript](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white) ![N|Javascript](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=Slack&logoColor=blue) ![N|Javascript](https://img.shields.io/badge/Figma-ED1A3A?style=for-the-badge&logo=Figma&logoColor=white)
 
+expo를 이용해 작업합니다.
 
 React Native, Typescript 로 만들어져 있습니다.
 각 이슈를 확인할 수 있으며, 단위 작업은 풀리퀘스트로 마무리합니다. 
 
-expo를 이용해 작업합니다.
 
-## 📌Stack 
+## 📌 Teammates
   * 주형 : 개발 juhyeongee@gmail.com 
   * 효준 : 디자인 
   * 겸송 : 기획
