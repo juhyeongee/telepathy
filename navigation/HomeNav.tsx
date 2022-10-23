@@ -1,14 +1,18 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "../navigation/HomeNav";
+import HomeScreen from "../screens/HomeScreen";
 
 export default function HomeNav() {
   const HomeStack = createNativeStackNavigator();
 
-  const HomeScreen = () => {
-    return (
-      <HomeStack.Navigator>
-        <HomeStack.Screen name="Home" component={HomeScreen}></HomeStack.Screen>
-      </HomeStack.Navigator>
-    );
-  };
+  return (
+    <HomeStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        animationTypeForReplace: "push",
+      }}
+      initialRouteName="Home"
+    >
+      <HomeStack.Screen name="Home" component={HomeScreen} />
+    </HomeStack.Navigator>
+  );
 }
