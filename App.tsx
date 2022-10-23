@@ -14,13 +14,42 @@ import { storeData } from "./util/http";
 import HomeScreen from "./screens/HomeScreen";
 import { Colors } from "./constants/Colors";
 import HomeNav from "./navigation/HomeNav";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useCallback, useEffect, useState } from "react";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <SafeAreaView style={{ flex: 1, backgroundColor: Colors.bgColor }}>
-        <HomeNav />
-      </SafeAreaView>
-    </NavigationContainer>
-  );
+  const [appIsReady, setAppIsReady] = useState(false);
+  const [fontLoaded] = useFonts({
+    neodgm: require("./fonts/neodgm.ttf"),
+  });
+
+  useEffect(() => {
+    if (!fontLoaded) {
+    } else {
+      SplashScreen.hideAsync();
+      setAppIsReady(true);
+    }
+  }, [fontLoaded]);
+
+  if (appIsReady) {
+    return (
+      <NavigationContainer>
+        <SafeAreaView
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            backgroundColor: Colors.bgColor,
+          }}
+        >
+          {/* <HomeNav /> */}
+          <Text style={{ fontFamily: "neodgm", color: "white" }}>
+            폰트적용 완료
+          </Text>
+        </SafeAreaView>
+      </NavigationContainer>
+    );
+  }
 }
