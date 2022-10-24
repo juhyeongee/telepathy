@@ -10,7 +10,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { storeData } from "./util/http";
+import { storeData } from "./utils/http";
 import HomeScreen from "./screens/HomeScreen";
 import { Colors } from "./constants/Colors";
 import HomeNav from "./navigation/HomeNav";
