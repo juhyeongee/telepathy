@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
-import PrimaryBtn from "../../components/PrimaryBtn";
-import { Colors } from "../../constants/Colors";
+import PrimaryBtn from "@components/PrimaryBtn";
+import { Colors } from "@constants/Colors";
 
 export default function SignInScreen() {
   return (
