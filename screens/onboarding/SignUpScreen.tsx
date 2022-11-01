@@ -3,6 +3,7 @@ import PrimaryBtn from "@/components/PrimaryBtn";
 import { Colors } from "@constants/Colors";
 import InputArea from "@/components/InputArea";
 import { useState } from "react";
+import { createUser } from "@/utils/auth";
 
 export default function SignUpScreen() {
   const [inputValues, setInputValues] = useState({
@@ -10,6 +11,7 @@ export default function SignUpScreen() {
     password: "",
     passwordConfirm: "",
   });
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
 
   const inputChangeHandler = (
     inputIdentifier: string,
@@ -19,11 +21,17 @@ export default function SignUpScreen() {
     console.log("wantToChangeValue", wantToChangeValue);
     setInputValues((currentInputValue) => {
       return { ...currentInputValue, [inputIdentifier]: wantToChangeValue };
-    });
+    }); //여러 인풋이 있는데, 이것에 대한 각각의 핸들러 함수가 필요함
+    // 그렇다고 함수를 다 각각 만드는 것은 좀 비효율적인 일
+    // 그래서 이것을 extends 가능한 함수로 만드는 것이 좋겠음.
   };
-  //여러 인풋이 있는데, 이것에 대한 각각의 핸들러 함수가 필요함
-  // 그렇다고 함수를 다 각각 만드는 것은 좀 비효율적인 일
-  // 그래서 이것을 extends 가능한 함수로 만드는 것이 좋겠음.
+
+  async function signUpHandler(email, password) {
+    setIsAuthenticating(true);
+    await createUser(email, password);
+    setIsAuthenticating(false);
+  }
+
   return (
     <View style={styles.container}>
       <View style={{ flex: 0.2 }} />
@@ -53,7 +61,13 @@ export default function SignUpScreen() {
         />
       </View>
       <View style={{ flex: 0.2, width: "100%" }}>
-        <PrimaryBtn onPress={() => console.log("pressed")} text="다음" />
+        <PrimaryBtn
+          onPress={() => {
+            console.log("pressed"),
+              signUpHandler("jju00788@gmail.com", "wnguddl12");
+          }}
+          text="다음"
+        />
       </View>
     </View>
   );
