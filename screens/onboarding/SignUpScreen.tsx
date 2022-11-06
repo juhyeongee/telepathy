@@ -4,6 +4,7 @@ import { Colors } from "@constants/Colors";
 import InputArea from "@/components/InputArea";
 import { useState } from "react";
 import { createUser } from "@/utils/auth";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SignUpScreen() {
   const [inputValues, setInputValues] = useState({
@@ -12,7 +13,7 @@ export default function SignUpScreen() {
     passwordConfirm: "",
   });
   const [isAuthenticating, setIsAuthenticating] = useState(false);
-
+  const navigation = useNavigation();
   const inputChangeHandler = (
     inputIdentifier: string,
     wantToChangeValue: string
@@ -34,7 +35,9 @@ export default function SignUpScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={{ flex: 0.2 }} />
+      <View style={{ flex: 0.2 }}>
+        <Text style={styles.title}>회원가입하기</Text>
+      </View>
       <View style={styles.inputAreaContainer}>
         <InputArea
           title="이메일"
@@ -63,8 +66,14 @@ export default function SignUpScreen() {
       <View style={{ flex: 0.2, width: "100%" }}>
         <PrimaryBtn
           onPress={() => {
+            navigation.navigate("SignIn");
+          }}
+          text="로그인하기"
+        />
+        <PrimaryBtn
+          onPress={() => {
             console.log("pressed"),
-              signUpHandler("jju00788@gmail.com", "wnguddl12");
+              signUpHandler("jju00788@naver.com", "wnguddl12");
           }}
           text="다음"
         />
@@ -86,5 +95,11 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "flex-start",
     justifyContent: "flex-start",
+  },
+  title: {
+    fontFamily: "neodgm",
+    color: "white",
+    fontSize: 30,
+    marginBottom: 6,
   },
 });
